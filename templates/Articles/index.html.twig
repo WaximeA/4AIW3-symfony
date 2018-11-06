@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <p>Voici les articles :</p>
+
+    {% for article in articles %}
+        <p>{{ article.id }}</p>
+        <p>{{ article.name }}</p>
+    {% else %}
+        <p>t'as pas d'articles poto</p>
+    {% endfor %}
+
+{% endblock %}
+

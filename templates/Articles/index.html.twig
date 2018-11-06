@@ -3,12 +3,20 @@
 {% block body %}
     <p>Voici les articles :</p>
 
+    <table>
+        <tr>
+            <td>id</td>
+            <td>name</td>
+        </tr>
     {% for article in articles %}
-        <p>{{ article.id }}</p>
-        <p>{{ article.name }}</p>
+        <tr>
+            <td>{{ article.id }}</td>
+            <td>{{ article.name }}</td>
+        </tr>
     {% else %}
         <p>t'as pas d'articles poto</p>
     {% endfor %}
+    </table>
 
 {% endblock %}
 

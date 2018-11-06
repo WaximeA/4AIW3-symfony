@@ -3,9 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
-use http\Env\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -40,12 +41,43 @@ class ArticleController extends AbstractController
      *
      * @return ??
      */
-    public function show( Article $article){
+    public function show(Article $article){
 
         return $this->render(
             'Articles/show.html.twig',
             [
                 "article" => $article,
+            ]
+        );
+    }
+
+    /**
+     * @Route(name="new", path="/new/", methods={"GET", "POST"})
+     *
+     * @param Request $request
+     * @param Article $article
+     *
+     * @return ??
+     */
+    public function new(Request $request){
+
+        $article = new Article();
+        $form = $this->createForm(ArticleType::class, $article);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($article);
+            $em->flush();
+
+            return $this->redirectToRoute('app_article_index');
+        }
+
+        return $this->render(
+            'Articles/new.html.twig',
+            [
+                'Article' => $article,
+                'form' => $form->createView()
             ]
         );
     }

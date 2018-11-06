@@ -55,7 +55,6 @@ class ArticleController extends AbstractController
      * @Route(name="new", path="/new/", methods={"GET", "POST"})
      *
      * @param Request $request
-     * @param Article $article
      *
      * @return ??
      */
@@ -76,7 +75,31 @@ class ArticleController extends AbstractController
         return $this->render(
             'Articles/new.html.twig',
             [
-                'Article' => $article,
+                'article' => $article,
+                'form' => $form->createView()
+            ]
+        );
+    }
+
+    /**
+     * @Route(name="new", path="/edit/{id}", methods={"GET", "POST"})
+     **/
+    public function edit(Request $request, Article $article){
+        $form = $this->createForm(ArticleType::class, $article);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($article);
+            $em->flush();
+
+            return $this->redirectToRoute('app_article_index');
+        }
+
+        return $this->render(
+            'Articles/edit.html.twig',
+            [
+                'article' => $article,
                 'form' => $form->createView()
             ]
         );

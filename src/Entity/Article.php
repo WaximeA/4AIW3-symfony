@@ -35,6 +35,11 @@ class Article
      */
     private $deleted;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tag", inversedBy="articles")
+     */
+    private $tag;
+
     public function __construct()
     {
         $this->deleted = false;
@@ -106,6 +111,18 @@ class Article
     public function setDeleted(bool $deleted): self
     {
         $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    public function getTag(): ?Tag
+    {
+        return $this->tag;
+    }
+
+    public function setTag(?Tag $tag): self
+    {
+        $this->tag = $tag;
 
         return $this;
     }

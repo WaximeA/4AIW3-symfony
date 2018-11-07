@@ -21,15 +21,15 @@ class ArticleController extends AbstractController
      *
      * @return ??
      */
-    public function index(ArticleRepository $articleRepository){
-
+    public function index(ArticleRepository $articleRepository)
+    {
         $articles = $articleRepository->findAll();
 
         return $this->render(
             'Articles/index.html.twig',
             [
-                "articles" => $articles,
-                "helloMessage" => "Nique ta mere"
+                "articles"     => $articles,
+                "helloMessage" => "Nique ta mere",
             ]
         );
     }
@@ -41,8 +41,8 @@ class ArticleController extends AbstractController
      *
      * @return ??
      */
-    public function show(Article $article){
-
+    public function show(Article $article)
+    {
         return $this->render(
             'Articles/show.html.twig',
             [
@@ -58,16 +58,21 @@ class ArticleController extends AbstractController
      *
      * @return ??
      */
-    public function new(Request $request){
-
+    public function new(Request $request)
+    {
         $article = new Article();
-        $form = $this->createForm(ArticleType::class, $article);
+        $form    = $this->createForm(ArticleType::class, $article);
 
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush();
+
+            $this->addFlash(
+                'success',
+                'You successfully create the produt '.$article->getName().' :)'
+            );
 
             return $this->redirectToRoute('app_article_index');
         }
@@ -76,7 +81,7 @@ class ArticleController extends AbstractController
             'Articles/new.html.twig',
             [
                 'article' => $article,
-                'form' => $form->createView()
+                'form'    => $form->createView(),
             ]
         );
     }
@@ -89,14 +94,20 @@ class ArticleController extends AbstractController
      *
      * @return ??
      **/
-    public function edit(Request $request, Article $article){
+    public function edit(Request $request, Article $article)
+    {
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush();
+
+            $this->addFlash(
+                'primary',
+                'The product '.$article->getName().' have been updated :)'
+            );
 
             return $this->redirectToRoute('app_article_index');
         }
@@ -105,8 +116,29 @@ class ArticleController extends AbstractController
             'Articles/edit.html.twig',
             [
                 'article' => $article,
-                'form' => $form->createView()
+                'form'    => $form->createView(),
             ]
         );
+    }
+
+    /**
+     * @Route(name="delete", path="/delete/{id}", methods={"GET", "POST"})
+     *
+     * @param Article $article
+     *
+     * @return ??
+     **/
+    public function delete(Article $article)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($article);
+        $em->flush();
+
+        $this->addFlash(
+            'danger',
+            'The product '.$article->getName().' have been deleted!'
+        );
+
+        return $this->redirectToRoute('app_article_index');
     }
 }

@@ -1,15 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
+    <div class="container" style="margin-top: 20px">
         <div class="row">
             <div class="col-md-12">
+                <p><a class="btn btn-primary btn-lg" href="{{ path('app_article_new') }}" role="button">Add new product</a></p>
                 <table class="table">
                     <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">name</th>
                         <th scope="col">edit</th>
+                        <th scope="col">delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -17,7 +19,8 @@
                         <tr>
                             <th scope="row">{{ article.id }}</th>
                             <td>{{ article.name }}</td>
-                            <td><a href="{{ path('app_article_edit', {'id': article.id}) }}">X</a></td>
+                            <td><a href="{{ path('app_article_edit', {'id': article.id}) }}"><i class="fas fa-pen text-primary"></i></a></td>
+                            <td><a href="{{ path('app_article_delete', {'id': article.id}) }}"><i class="fas fa-trash-alt text-danger"></i></a></td>
                         </tr>
                     {% else %}
                         <p>t'as pas d'articles poto</p>

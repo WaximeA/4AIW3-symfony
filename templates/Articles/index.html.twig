@@ -10,6 +10,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">name</th>
+                        <th scope="col">content</th>
                         <th scope="col">edit</th>
                         <th scope="col">delete</th>
                     </tr>
@@ -19,6 +20,7 @@
                         <tr>
                             <th scope="row">{{ article.id }}</th>
                             <td>{{ article.name }}</td>
+                            <td>{{ article.content }}</td>
                             <td><a href="{{ path('app_article_edit', {'id': article.id}) }}"><i class="fas fa-pen text-primary"></i></a></td>
                             <td><a href="{{ path('app_article_delete', {'id': article.id}) }}"><i class="fas fa-trash-alt text-danger"></i></a></td>
                         </tr>

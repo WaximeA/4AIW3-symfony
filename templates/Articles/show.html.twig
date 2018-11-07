@@ -5,7 +5,8 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>L'article n°{{ article.id }}:</h1>
-                <p>{{ article.name }}</p>
+                <h3>{{ article.name }}</h3>
+                <p>{{ article.content }}</p>
             </div>
         </div>
         {% include 'Page/back.html.twig' with {'backLink': 'app_article_index'} %}

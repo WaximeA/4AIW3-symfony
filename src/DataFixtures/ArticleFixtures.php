@@ -14,7 +14,8 @@ class ArticleFixtures extends Fixture
 
         for ($i=0; $i < 10; $i++){
             $article = (new Article())
-                ->setName($faker->lastName);
+                ->setName($faker->lastName)
+                ->setContent($faker->text);
             $manager->persist($article);
         }
 

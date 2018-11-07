@@ -25,6 +25,12 @@ class Article
     private $name;
 
     /**
+     * @var string $content
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $content;
+
+    /**
      * Get id
      *
      * @return int
@@ -58,5 +64,27 @@ class Article
         return $this;
     }
 
+    /**
+     * Description getContent function
+     *
+     * @return string
+     */
+    public function getContent(): string
+    {
+        return $this->content;
+    }
 
+    /**
+     * Description setContent function
+     *
+     * @param string $content
+     *
+     * @return $this
+     */
+    public function setContent(string $content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
 }

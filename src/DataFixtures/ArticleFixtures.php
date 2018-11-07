@@ -19,7 +19,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
             $article = (new Article())
                 ->setName($faker->lastName)
                 ->setContent($faker->text)
-                ->setTag($tags[array_rand($tags)]);
+                ->addTag($tags[array_rand($tags)]);
             $manager->persist($article);
         }
 

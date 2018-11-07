@@ -15,12 +15,12 @@ class ArticleType extends AbstractType
         $builder
             ->add('name')
             ->add('content')
-            ->add('tag', EntityType::class,
+            ->add('tags', EntityType::class,
                 [
                     'label'        => 'Tag',
                     'class'        => Tag::class,
                     'choice_label' => 'name',
-                    'multiple'     => false,
+                    'multiple'     => true,
                     'required'     => false,
                 ]
             )

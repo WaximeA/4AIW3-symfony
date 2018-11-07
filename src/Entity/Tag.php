@@ -24,7 +24,7 @@ class Tag
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="tag")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Article", mappedBy="tags")
      */
     private $articles;
 
@@ -62,7 +62,7 @@ class Tag
     {
         if (!$this->articles->contains($article)) {
             $this->articles[] = $article;
-            $article->setTag($this);
+            $article->addTag($this);
         }
 
         return $this;
@@ -72,10 +72,7 @@ class Tag
     {
         if ($this->articles->contains($article)) {
             $this->articles->removeElement($article);
-            // set the owning side to null (unless already changed)
-            if ($article->getTag() === $this) {
-                $article->setTag(null);
-            }
+            $article->removeTag($this);
         }
 
         return $this;

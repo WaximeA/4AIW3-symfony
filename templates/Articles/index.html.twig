@@ -22,7 +22,15 @@
                             <th scope="row">{{ article.id }}</th>
                             <td><a href="{{ path('app_article_show', {'id': article.id}) }}">{{ article.name }}</a></td>
                             <td>{{ article.content }}</td>
-                            <td>{{ article.tag.name }}</td>
+                            <td>
+                                <ul>
+                            {% for tag in article.tags %}
+                                <li>{{ tag.name }}</li>
+                            {% else %}
+                                Aucun tag.
+                            {% endfor %}
+                                </ul>
+                            </td>
                             <td><a href="{{ path('app_article_edit', {'id': article.id}) }}"><i class="fas fa-pen text-primary"></i></a></td>
                             <td><a href="{{ path('app_article_delete', {'id': article.id, '_token': csrf_token('delete-item'~article.id)}) }}"><i class="fas fa-trash-alt text-danger"></i></a></td>
                         </tr>

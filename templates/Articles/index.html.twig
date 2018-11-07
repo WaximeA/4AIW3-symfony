@@ -9,10 +9,11 @@
                     <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">name</th>
-                        <th scope="col">content</th>
-                        <th scope="col">edit</th>
-                        <th scope="col">delete</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Content</th>
+                        <th scope="col">Tag</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -21,6 +22,7 @@
                             <th scope="row">{{ article.id }}</th>
                             <td><a href="{{ path('app_article_show', {'id': article.id}) }}">{{ article.name }}</a></td>
                             <td>{{ article.content }}</td>
+                            <td>{{ article.tag.name }}</td>
                             <td><a href="{{ path('app_article_edit', {'id': article.id}) }}"><i class="fas fa-pen text-primary"></i></a></td>
                             <td><a href="{{ path('app_article_delete', {'id': article.id, '_token': csrf_token('delete-item'~article.id)}) }}"><i class="fas fa-trash-alt text-danger"></i></a></td>
                         </tr>

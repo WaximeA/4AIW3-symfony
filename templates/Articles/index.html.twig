@@ -1,22 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <p>Voici les articles :</p>
-
-    <table>
-        <tr>
-            <td>id</td>
-            <td>name</td>
-        </tr>
-    {% for article in articles %}
-        <tr>
-            <td>{{ article.id }}</td>
-            <td>{{ article.name }}</td>
-        </tr>
-    {% else %}
-        <p>t'as pas d'articles poto</p>
-    {% endfor %}
-    </table>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">name</th>
+                        <th scope="col">edit</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for article in articles %}
+                        <tr>
+                            <th scope="row">{{ article.id }}</th>
+                            <td>{{ article.name }}</td>
+                            <td><a href="{{ path('app_article_edit', {'id': article.id}) }}">X</a></td>
+                        </tr>
+                    {% else %}
+                        <p>t'as pas d'articles poto</p>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% include 'Page/back.html.twig' with {'backLink': 'app_default_index'} %}
+    </div>
 {% endblock %}
 

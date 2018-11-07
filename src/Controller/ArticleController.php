@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @route(name="app_article_", path="articles")
+ * @Route(name="app_article_", path="articles")
  */
 class ArticleController extends AbstractController
 {
@@ -82,7 +82,12 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route(name="new", path="/edit/{id}", methods={"GET", "POST"})
+     * @Route(name="edit", path="/edit/{id}", methods={"GET", "POST"})
+     *
+     * @param Request $request
+     * @param Article $article
+     *
+     * @return ??
      **/
     public function edit(Request $request, Article $article){
         $form = $this->createForm(ArticleType::class, $article);

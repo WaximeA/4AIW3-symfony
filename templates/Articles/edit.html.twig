@@ -1,6 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Modifie l'article {{ article.id }}</h1>
-    {{ form(form) }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Modifie l'article {{ article.name }}</h1>
+                {{ form(form) }}
+            </div>
+        </div>
+        {% include 'Page/back.html.twig' with {'backLink': 'app_article_index'} %}
+    </div>
 {% endblock %}

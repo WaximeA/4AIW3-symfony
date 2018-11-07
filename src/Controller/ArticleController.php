@@ -23,7 +23,9 @@ class ArticleController extends AbstractController
      */
     public function index(ArticleRepository $articleRepository)
     {
-        $articles = $articleRepository->findAll();
+        $articles = $articleRepository->findBy([
+                'deleted' => false
+        ]);
 
         return $this->render(
             'Articles/index.html.twig',
@@ -124,14 +126,19 @@ class ArticleController extends AbstractController
     /**
      * @Route(name="delete", path="/delete/{id}", methods={"GET", "POST"})
      *
+     * @param Request $request
      * @param Article $article
      *
      * @return ??
      **/
-    public function delete(Article $article)
+    public function delete(Request $request, Article $article)
     {
+        if (!$this->isCsrfTokenValid('delete-item'.$article->getId(), $request->query->get('_token'))) {
+            throw $this->createAccessDeniedException();
+        }
+
         $em = $this->getDoctrine()->getManager();
-        $em->remove($article);
+        $article->setDeleted(1);
         $em->flush();
 
         $this->addFlash(

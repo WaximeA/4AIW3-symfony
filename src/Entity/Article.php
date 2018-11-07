@@ -31,6 +31,16 @@ class Article
     private $content;
 
     /**
+     * @ORM\Column(type="boolean", options={"default": 0})
+     */
+    private $deleted;
+
+    public function __construct()
+    {
+        $this->deleted = false;
+    }
+
+    /**
      * Get id
      *
      * @return int
@@ -84,6 +94,18 @@ class Article
     public function setContent(string $content)
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getDeleted(): bool
+    {
+        return $this->deleted;
+    }
+
+    public function setDeleted(bool $deleted): self
+    {
+        $this->deleted = $deleted;
 
         return $this;
     }

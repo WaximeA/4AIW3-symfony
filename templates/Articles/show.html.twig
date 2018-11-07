@@ -4,9 +4,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>L'article n°{{ article.id }}:</h1>
+                <h1>Article n°{{ article.id }} :</h1>
                 <h3>{{ article.name }}</h3>
                 <p>{{ article.content }}</p>
+                <p>
+                    <a href="{{ path('app_article_edit', {'id': article.id}) }}"><i class="fas fa-pen text-primary"></i></a>
+                    <a href="{{ path('app_article_delete', {'id': article.id, '_token': csrf_token('delete-item'~article.id)}) }}"><i class="fas fa-trash-alt text-danger"></i></a>
+                </p>
             </div>
         </div>
         {% include 'Page/back.html.twig' with {'backLink': 'app_article_index'} %}

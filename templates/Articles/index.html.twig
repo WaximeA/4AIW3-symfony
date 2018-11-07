@@ -19,10 +19,10 @@
                     {% for article in articles %}
                         <tr>
                             <th scope="row">{{ article.id }}</th>
-                            <td>{{ article.name }}</td>
+                            <td><a href="{{ path('app_article_show', {'id': article.id}) }}">{{ article.name }}</a></td>
                             <td>{{ article.content }}</td>
                             <td><a href="{{ path('app_article_edit', {'id': article.id}) }}"><i class="fas fa-pen text-primary"></i></a></td>
-                            <td><a href="{{ path('app_article_delete', {'id': article.id}) }}"><i class="fas fa-trash-alt text-danger"></i></a></td>
+                            <td><a href="{{ path('app_article_delete', {'id': article.id, '_token': csrf_token('delete-item'~article.id)}) }}"><i class="fas fa-trash-alt text-danger"></i></a></td>
                         </tr>
                     {% else %}
                         <p>t'as pas d'articles poto</p>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "557f432e60ff2a618d99040ea9e284f4",
+    "content-hash": "99732e6ffe639256e621430338ccd180",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -940,12 +940,12 @@
             "version": "v2.6.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/doctrine2.git",
+                "url": "https://github.com/doctrine/orm.git",
                 "reference": "d2b4dd71d2a276edd65d0c170375b445f8a4a4a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/d2b4dd71d2a276edd65d0c170375b445f8a4a4a8",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/d2b4dd71d2a276edd65d0c170375b445f8a4a4a8",
                 "reference": "d2b4dd71d2a276edd65d0c170375b445f8a4a4a8",
                 "shasum": ""
             },
@@ -3972,16 +3972,16 @@
         },
         {
             "name": "symfony/security-bundle",
-            "version": "v4.1.7",
+            "version": "v4.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-bundle.git",
-                "reference": "1163903123399ee72c128f5bdb64f0e07c839b81"
+                "reference": "d896014fc002391b6953c02ba5734c17e8a5cb61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-bundle/zipball/1163903123399ee72c128f5bdb64f0e07c839b81",
-                "reference": "1163903123399ee72c128f5bdb64f0e07c839b81",
+                "url": "https://api.github.com/repos/symfony/security-bundle/zipball/d896014fc002391b6953c02ba5734c17e8a5cb61",
+                "reference": "d896014fc002391b6953c02ba5734c17e8a5cb61",
                 "shasum": ""
             },
             "require": {
@@ -4048,7 +4048,7 @@
             ],
             "description": "Symfony SecurityBundle",
             "homepage": "https://symfony.com",
-            "time": "2018-10-28T18:38:52+00:00"
+            "time": "2019-01-03T09:05:57+00:00"
         },
         {
             "name": "symfony/serializer",
@@ -5501,16 +5501,16 @@
         },
         {
             "name": "symfony/maker-bundle",
-            "version": "v1.9.0",
+            "version": "v1.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/maker-bundle.git",
-                "reference": "e873047b6022a0343c9354f65d5d47b9e351dd53"
+                "reference": "24b19cccad0c658eca516b35b08668d123fabf92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/e873047b6022a0343c9354f65d5d47b9e351dd53",
-                "reference": "e873047b6022a0343c9354f65d5d47b9e351dd53",
+                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/24b19cccad0c658eca516b35b08668d123fabf92",
+                "reference": "24b19cccad0c658eca516b35b08668d123fabf92",
                 "shasum": ""
             },
             "require": {
@@ -5563,7 +5563,7 @@
                 "scaffold",
                 "scaffolding"
             ],
-            "time": "2018-11-03T18:25:11+00:00"
+            "time": "2019-01-05T04:30:01+00:00"
         },
         {
             "name": "symfony/panther",

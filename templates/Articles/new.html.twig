@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Ajoute un article</h1>
+                {{ form(form) }}
+            </div>
+        </div>
+        {% include 'Page/back.html.twig' with {'backLink': 'app_article_index'} %}
+    </div>
+{% endblock %}
